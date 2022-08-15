@@ -1,6 +1,7 @@
 <template>
     <div>
-        <p>Estou trabalhando no momento.</p>
+        <p v-if="esta_trabalhando">Estou trabalhando no momento.</p>
+        <p v-else>Não estou trabalhando no momento.</p>
         <p>Utilizo as seguintes tecnologias:</p>
 
         <ul>
@@ -8,16 +9,46 @@
             <li>PHP</li>
             <li>MySql</li>
         </ul>
+        <div>
+            <button @click="showEmail">{{MostrarEmail}}</button>
+        </div>
+        <p v-show="email"> Mande um email para {{email}}</p>
+        <p>Para acessar meu portfólio <a v-bind:href="meu_link" target="_blank">basta clicar aqui</a></p>
+
+       <Avatar />
     </div>
 </template>
 
 <script>
-    export default {
-        name: 'Info',
-        data() {
-            return {
 
+import Avatar from './Avatar.vue';
+
+    export default {
+        name: "Info",
+    data() {
+        return {
+            esta_trabalhando: true,
+            email: "",
+            meu_link: "https://google.com",
+            MostrarEmail: 'Mostrar Email'
+        };
+    },
+    components: { 
+        Avatar 
+    },
+    methods: {
+        showEmail() {
+            if(this.email == '') {
+                this.email = 'romulo@gmail.com';
+                this.MostrarEmail = "Esconder Email";
+            }else{
+                this.email = '';
+                this.MostrarEmail = "Mostrar Email";
             }
+            
         }
     }
+
+    
+}
 </script>
