@@ -1,4 +1,4 @@
-# projeto_vue
+# burger-vue
 
 ## Project setup
 ```
